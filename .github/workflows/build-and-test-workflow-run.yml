@@ -50,6 +50,13 @@ jobs:
     - run: echo $MODEL_PATH
     - run: echo ${GITHUB_WORKSPACE}
     - uses: actions/checkout@v4
+      with:
+        repository: ${{ github.event.workflow_run.head_repository.full_name }}
+        ref: ${{ github.event.workflow_run.head_branch }}
+
+    - run:
+        git rev-parse HEAD
+
 #    - name: Set up Python 3.12
 #      uses: actions/setup-python@v5
 #      with:
