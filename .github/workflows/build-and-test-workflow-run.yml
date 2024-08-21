@@ -43,6 +43,10 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
     - run: echo $MODEL_PATH
     - run: echo ${GITHUB_WORKSPACE}
     - uses: actions/checkout@v4
